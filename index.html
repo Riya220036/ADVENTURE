@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WildPeak Adventures | Mountain Forest Exploration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #2c5e3a;
+            --secondary: #5d8c54;
+            --accent: #8bc34a;
+            --dark: #0d1b27;
+            --light: #f8f9fa;
+            --glass: rgba(13, 27, 39, 0.5);
+        }
+
+        body {
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #0d1b27, #1a2a3a);
+            color: var(--light);
+            transition: background 1.5s ease;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(13, 27, 39, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(139, 195, 74, 0.2);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--accent), #4caf50);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 20px;
+        }
+
+        nav a:hover, nav a.active {
+            background: rgba(139, 195, 74, 0.2);
+            color: var(--accent);
+        }
+
+        .cta-button {
+            background: var(--accent);
+            color: var(--dark);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(139, 195, 74, 0.4);
+        }
+
+        /* Improved African Forest Hero Section */
+        .african-hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 0 5%;
+            background: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80') center/cover;
+        }
+
+        .african-container {
+            width: 100%;
+            height: 80%;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+            background: rgba(13, 27, 39, 0.5); /* Enhanced glass effect */
+            backdrop-filter: blur(10px); /* Increased blur for glass effect */
+            border: 1px solid rgba(139, 195, 74, 0.2);
+            display: flex;
+            margin-top: auto;
+            margin-bottom: 30px;
+        }
+
+        .split-container {
+            display: flex;
+            height: 100%;
+            width: 100%;
+        }
+
+        .text-side {
+            width: 50%;
+            background: rgba(0, 0, 0, 0.6); /* Enhanced glass effect */
+            backdrop-filter: blur(5px); /* Added glass effect */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 40px;
+            position: relative;
+        }
+
+        .african-logo {
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .logo-text span:first-child {
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .logo-text span:nth-child(2) {
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: #6ACB3C;
+        }
+
+        .logo-text span:last-child {
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .logo-subtext {
+            font-size: 0.8rem;
+            color: #6ACB3C;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-top: 5px;
+        }
+
+        .logo-subtext span {
+            color: white;
+        }
+
+        .african-content {
+            max-width: 350px;
+        }
+
+        .content-subtitle {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 600;
+            font-style: italic;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .african-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .african-title span:first-child {
+            background: linear-gradient(to right, var(--accent), #6ACB3C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .african-title span:nth-child(2) {
+            color: white;
+        }
+
+        .african-title span:last-child {
+            background: linear-gradient(to right, var(--accent), #6ACB3C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+        }
+
+        .african-description {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .african-button {
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 800;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .african-button::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: #6ACB3C;
+            transform: scaleX(1);
+            transition: transform 0.3s ease;
+        }
+
+        .african-button:hover::after {
+            transform: scaleX(0);
+        }
+
+        .image-side {
+            width: 50%;
+            position: relative;
+        }
+
+        .african-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .navigation-arrows {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-arrow {
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-arrow:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .navigation-dots {
+            position: absolute;
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .nav-dot:hover {
+            transform: scale(1.2);
+        }
+
+        .dot-connector {
+            width: 2px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.3);
+            margin: 0 auto;
+        }
+
+        /* Improved 3D Carousel Section */
+        .carousel-section {
+            padding: 100px 5%;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0d1b27, #1a2a3a);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 10; /* Ensure it's above the carousel */
+            background: rgba(13, 27, 39, 0.7); /* Glass effect */
+            backdrop-filter: blur(10px); /* Glass effect */
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            border: 1px solid rgba(139, 195, 74, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, var(--accent), #4caf50);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #e0e0e0;
+        }
+
+        .carousel-container {
+            width: 100%;
+            height: 60vh; /* Reduced height for better fit */
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform-style: preserve-3d;
+            perspective: 1200px;
+        }
+
+        .carousel {
+            position: relative;
+            width: 280px; /* Slightly reduced width */
+            height: 420px; /* Slightly reduced height */
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .card {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-content {
+            padding: 25px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            color: white;
+            transform: translateY(40px); /* Reduced translation for better visibility */
+            transition: transform 0.5s ease;
+            backdrop-filter: blur(5px); /* Glass effect */
+        }
+
+        .card:hover .card-content {
+            transform: translateY(0);
+        }
+
+        .card h3 {
+            font-size: 1.6rem; /* Slightly smaller font */
+            margin-bottom: 10px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .card p {
+            font-size: 0.95rem; /* Slightly smaller font */
+            opacity: 0.8;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .nav-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px); /* Glass effect */
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: rgba(76, 175, 80, 0.7);
+            transform: scale(1.1);
+        }
+
+        .nav-btn i {
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .wildlife-icon {
+            position: absolute;
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.1);
+            z-index: 1;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0) rotate(0deg); }
+            100% { transform: translateY(-100vh) translateX(100px) rotate(360deg); }
+        }
+
+        /* Consistent Background for All Sections */
+        .destinations, .features, .testimonials, .carousel-section {
+            background: rgba(13, 27, 39, 0.6); /* Consistent semi-transparent background */
+            backdrop-filter: blur(10px); /* Enhanced glass effect */
+            border-top: 1px solid rgba(139, 195, 74, 0.1);
+            border-bottom: 1px solid rgba(139, 195, 74, 0.1);
+            transition: background 1.5s ease;
+        }
+
+        .features {
+            background: url('https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-4.0.3') center/cover, rgba(13, 27, 39, 0.6);
+            background-blend-mode: overlay;
+        }
+
+        /* Destinations Section */
+        .destinations {
+            padding: 100px 5%;
+        }
+
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .destination-card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            position: relative;
+            height: 400px;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 40px rgba(139, 195, 74, 0.3);
+        }
+
+        .destination-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .destination-card:hover .destination-img {
+            transform: scale(1.1);
+        }
+
+        .destination-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            backdrop-filter: blur(5px); /* Glass effect */
+        }
+
+        .destination-info h3 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .destination-info p {
+            opacity: 0.8;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .rating {
+            color: #ffc107;
+            margin-bottom: 10px;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 5%;
+            position: relative;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(139, 195, 74, 0.3);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(44, 94, 58, 0.4);
+            border-color: var(--accent);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 5%;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px); /* Glass effect */
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(139, 195, 74, 0.1);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            background: rgba(44, 94, 58, 0.2);
+            border-color: var(--accent);
+        }
+
+        .testimonial-content {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+            border: 2px solid var(--accent);
+        }
+
+        .testimonial-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .testimonial-text .rating {
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a141f;
+            padding: 70px 5% 30px;
+            border-top: 1px solid rgba(139, 195, 74, 0.1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column {
+            backdrop-filter: blur(5px); /* Glass effect */
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(139, 195, 74, 0.1);
+        }
+
+        .footer-column h3 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            backdrop-filter: blur(5px); /* Glass effect */
+            border-radius: 15px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .section-title h2 { font-size: 2rem; }
+            .african-title { font-size: 2.8rem; }
+        }
+
+        @media (max-width: 768px) {
+            .split-container { flex-direction: column; }
+            .text-side, .image-side { width: 100%; height: 50%; }
+            .text-side { padding: 20px; }
+            .african-container { height: 85vh; }
+            .african-logo { top: 15px; left: 20px; }
+            .african-title { font-size: 2.5rem; }
+            .navigation-dots { right: 15px; }
+            .navigation-arrows { bottom: 15px; right: 15px; }
+            .carousel { transform: scale(0.9); }
+            .carousel-container { height: 50vh; }
+        }
+
+        @media (max-width: 576px) {
+            .african-title { font-size: 2rem; }
+            .logo-text span { font-size: 1.5rem; }
+            .destination-grid, .testimonial-grid { grid-template-columns: 1fr; }
+            .african-container { height: 90vh; }
+            .section-title { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">WildPeak</div>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">Destinations</a></li>
+                <li><a href="#">Adventures</a></li>
+                <li><a href="#">Tours</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <a href="#" class="cta-button">Book Now</a>
+    </header>
+
+    <!-- Improved Forest Hero Section -->
+    <section class="african-hero">
+        <div class="african-container">
+            <div class="split-container">
+                <div class="text-side">
+                    <div class="african-logo">
+                        <div class="logo-text">
+                            <span>FOR</span>
+                            <span>EST</span>
+                            <span>JOURNEY</span>
+                        </div>
+                        <div class="logo-subtext">YOU <span>CAN LIVE OUR LIFE</span></div>
+                    </div>
+                    
+                    <div class="african-content">
+                        <div class="content-subtitle">AMAZING TRIPS</div>
+                        <h1 class="african-title">
+                            <span>ANCIENT</span>
+                            <span>FOREST</span>
+                            <span>ADVENTURE</span>
+                        </h1>
+                        <p class="african-description">
+                            There is a moment in the life of any aspiring adventurer that it is time to embark on that first journey into the wilderness. Experience the magic of ancient forests with our expert guides.
+                        </p>
+                        <a href="#" class="african-button">LEARN MORE</a>
+                    </div>
+                </div>
+                
+                <div class="image-side">
+                    <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                         alt="Forest adventure" class="african-image">
+                    
+                    <div class="navigation-dots">
+                        <div class="nav-dot active"></div>
+                        <div class="nav-dot"></div>
+                        <div class="nav-dot"></div>
+                        <div class="dot-connector"></div>
+                    </div>
+                    
+                    <div class="navigation-arrows">
+                        <div class="nav-arrow">
+                            <i class="fas fa-arrow-left"></i>
+                        </div>
+                        <div class="nav-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Improved 3D Carousel Section -->
+    <section class="carousel-section" id="carousel-section">
+        <div class="section-title">
+            <h2>Featured Adventures</h2>
+            <p>Experience our most popular mountain forest expeditions. Slide to discover breathtaking destinations.</p>
+        </div>
+        
+        <div class="carousel-container">
+            <div class="carousel" id="adventure-carousel">
+                <!-- Cards will be generated by JavaScript -->
+            </div>
+        </div>
+        
+        <div class="navigation">
+            <div class="nav-btn" id="prev-btn">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="nav-btn" id="next-btn">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+        
+        <!-- Wildlife icons floating in background -->
+        <div class="wildlife-icon" style="top: 10%; left: 15%;"><i class="fas fa-tree"></i></div>
+        <div class="wildlife-icon" style="top: 20%; left: 80%;"><i class="fas fa-feather-alt"></i></div>
+        <div class="wildlife-icon" style="top: 60%; left: 10%;"><i class="fas fa-leaf"></i></div>
+        <div class="wildlife-icon" style="top: 70%; left: 75%;"><i class="fas fa-paw"></i></div>
+        <div class="wildlife-icon" style="top: 40%; left: 50%;"><i class="fas fa-mountain"></i></div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section class="destinations">
+        <div class="section-title">
+            <h2>Top Destinations</h2>
+            <p>Explore our most recommended forest and mountain destinations around the world.</p>
+        </div>
+        
+        <div class="destination-grid">
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Misty Forest" class="destination-img">
+                <div class="destination-info">
+                    <h3>Misty Pine Forest</h3>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>4.5 (128 reviews)</span>
+                    </div>
+                    <p>Canada's ancient pine forests shrouded in morning mist</p>
+                </div>
+            </div>
+            
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Mountain Peaks" class="destination-img">
+                <div class="destination-info">
+                    <h3>Alpine Summit Trail</h3>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>5.0 (92 reviews)</span>
+                    </div>
+                    <p>Swiss Alps panoramic views and challenging trails</p>
+                </div>
+            </div>
+            
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1418065460487-3e41a6c84dc5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Waterfall" class="destination-img">
+                <div class="destination-info">
+                    <h3>Emerald Falls</h3>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>4.0 (156 reviews)</span>
+                    </div>
+                    <p>Costa Rica's hidden waterfalls in lush rainforests</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="section-title">
+            <h2>Why Choose Us</h2>
+            <p>Experience adventure with confidence and peace of mind</p>
+        </div>
+        
+        <div class="features-container">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-map-marked-alt"></i>
+                </div>
+                <h3>Expert Guides</h3>
+                <p>Our certified guides know every trail and hidden gem in the forests.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Safety First</h3>
+                <p>Top-quality equipment and safety protocols on all adventures.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h3>Eco-Friendly</h3>
+                <p>Committed to sustainable tourism and preserving nature.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-campground"></i>
+                </div>
+                <h3>Memorable Experiences</h3>
+                <p>Create unforgettable memories in the world's most beautiful forests.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="section-title">
+            <h2>Adventurer Stories</h2>
+            <p>Hear from travelers who have experienced our mountain adventures</p>
+        </div>
+        
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Alex Morgan" class="testimonial-img">
+                    <div class="testimonial-text">
+                        <h4>Alex Morgan</h4>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p>"The Alpine Summit Trail was the most breathtaking experience of my life. The guides were knowledgeable and made us feel safe throughout the journey."</p>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Sarah Johnson" class="testimonial-img">
+                    <div class="testimonial-text">
+                        <h4>Sarah Johnson</h4>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <p>"Emerald Falls exceeded all my expectations. The lush rainforest and majestic waterfalls were absolutely magical. Can't wait for my next adventure!"</p>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Michael Chen" class="testimonial-img">
+                    <div class="testimonial-text">
+                        <h4>Michael Chen</h4>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p>"As an experienced hiker, I was impressed with the professionalism and attention to detail. The Misty Pine Forest tour was challenging but incredibly rewarding."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>WildPeak Adventures</h3>
+                <p>Embark on unforgettable journeys through the world's most stunning mountain forests with our expert-guided adventures.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Adventures</a></li>
+                    <li><a href="#">Destinations</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Destinations</h3>
+                <ul class="footer-links">
+                    <li><a href="#">North America</a></li>
+                    <li><a href="#">South America</a></li>
+                    <li><a href="#">European Alps</a></li>
+                    <li><a href="#">Asian Highlands</a></li>
+                    <li><a href="#">Oceania</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Forest Trail, Mountain View</li>
+                    <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                    <li><i class="fas fa-envelope"></i> info@wildpeakadventures.com</li>
+                    <li><i class="fas fa-clock"></i> Mon-Fri: 9AM - 6PM</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 WildPeak Adventures. All rights reserved. | Designed with <i class="fas fa-heart" style="color: #e74c3c;"></i> for nature lovers</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const carousel = document.getElementById('adventure-carousel');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const carouselSection = document.getElementById('carousel-section');
+            
+            // Adventure data with images and background colors
+            const adventures = [
+                {
+                    title: "Misty Pine Forest",
+                    description: "Explore Canada's ancient pine forests shrouded in morning mist. Home to centuries-old trees and elusive wildlife.",
+                    bgImage: "url('https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')",
+                    bgColor: "#1e3c1e"
+                },
+                {
+                    title: "Alpine Summit Trail",
+                    description: "Challenging hike to breathtaking mountain peaks with panoramic views of the Swiss Alps.",
+                    bgImage: "url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')",
+                    bgColor: "#2a4a75"
+                },
+                {
+                    title: "Emerald Falls",
+                    description: "Discover hidden waterfalls cascading down moss-covered rocks in Costa Rica's rainforests.",
+                    bgImage: "url('https://images.unsplash.com/photo-1418065460487-3e41a6c84dc5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')",
+                    bgColor: "#0d3b44"
+                },
+                {
+                    title: "Bamboo Grove Trail",
+                    description: "Wander through serene bamboo forests where sunlight filters through the dense canopy.",
+                    bgImage: "url('https://images.unsplash.com/photo-1470240731273-7821a6eeb6bd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')",
+                    bgColor: "#1d4d3a"
+                },
+                {
+                    title: "Redwood Giants",
+                    description: "Walk among giants in California's ancient redwood forests where trees tower above.",
+                    bgImage: "url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')",
+                    bgColor: "#421e1e"
+                },
+                {
+                    title: "Mountain Lake Trek",
+                    description: "Discover crystal-clear alpine lakes surrounded by majestic snow-capped peaks.",
+                    bgImage: "url('https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')",
+                    bgColor: "#1a535c"
+                }
+            ];
+            
+            let currentIndex = 0;
+            const cardCount = adventures.length;
+            const angle = 360 / cardCount;
+            
+            // Create cards
+            adventures.forEach((adventure, index) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.style.background = `${adventure.bgImage} center/cover`;
+                card.style.transform = `rotateY(${index * angle}deg) translateZ(500px)`;
+                
+                const content = document.createElement('div');
+                content.className = 'card-content';
+                content.innerHTML = `
+                    <h3>${adventure.title}</h3>
+                    <p>${adventure.description}</p>
+                    <a href="#" class="cta-button">Explore Trail</a>
+                `;
+                
+                card.appendChild(content);
+                carousel.appendChild(card);
+            });
+            
+            // Update carousel rotation
+            function rotateCarousel() {
+                carousel.style.transform = `rotateY(${currentIndex * -angle}deg)`;
+                updateBackground();
+            }
+            
+            // Update background based on current card
+            function updateBackground() {
+                const adventure = adventures[currentIndex];
+                carouselSection.style.background = `linear-gradient(135deg, ${adventure.bgColor}, #0d1b27)`;
+            }
+            
+            // Navigation event listeners
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + cardCount) % cardCount;
+                rotateCarousel();
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % cardCount;
+                rotateCarousel();
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    prevBtn.click();
+                } else if (e.key === 'ArrowRight') {
+                    nextBtn.click();
+                }
+            });
+            
+            // Initialize
+            rotateCarousel();
+            
+            // Auto rotation
+            setInterval(() => {
+                nextBtn.click();
+            }, 5000);
+            
+            // Forest hero navigation
+            const forestArrows = document.querySelectorAll('.nav-arrow');
+            const forestDots = document.querySelectorAll('.nav-dot');
+            
+            forestArrows.forEach(arrow => {
+                arrow.addEventListener('click', () => {
+                    // Simulate navigation
+                    const currentDot = document.querySelector('.nav-dot.active');
+                    const nextDot = currentDot.nextElementSibling || 
+                                   document.querySelector('.nav-dot:first-child');
+                    
+                    if (nextDot && !nextDot.classList.contains('dot-connector')) {
+                        currentDot.classList.remove('active');
+                        nextDot.classList.add('active');
+                    }
+                });
+            });
+            
+            forestDots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    forestDots.forEach(d => d.classList.remove('active'));
+                    dot.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
